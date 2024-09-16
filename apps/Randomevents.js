@@ -55,11 +55,11 @@ export class Kc extends plugin {
       if (minutes > 0) {
           return e.reply([`下凡间寻求趣事很耗心神的！休息下吧~\n还有${minutes}分${remainingSeconds}秒冷却`]);
       } else {
-          return e.reply([`下凡间寻求趣事很耗心神的！休息下吧~\n${remainingSeconds}秒冷却`]);
+          return e.reply([`下凡间寻求趣事很耗心神的！休息下吧~\n${remainingSeconds}秒冷却`],true);
       }
       }
       
-      e.reply('噔噔噔~你带着你的木鱼离开寺庙咯！今天会遇到什么趣事呢~\n(选择答案只需要发送对应选择的序号)')
+      e.reply('噔噔噔~你带着你的木鱼离开寺庙咯！今天会遇到什么趣事呢~\n(选择答案只需要发送对应选择的序号)',true)
       /**写一个计时器 */
       let count = 3;
       const interval = setInterval(() => {
@@ -71,13 +71,13 @@ export class Kc extends plugin {
       clearInterval(interval);
       let num = Math.floor(Math.random() * 5) + 1;
        if(num === 1 ){
-        e.reply('今天，你去给木鱼买精油。突然，一个老者跳了出来，拦住了你的去路。“嘿嘿，小友，我看你骨骼精奇，我把我这本书赠与你，如何？”\n你看着老者，陷入沉思...\n1：欸嘿，不要白不要！\n2：放肆！我有成帝之姿，今日你这老者用破书羞辱我？\n3：拒绝老者，径直离开')
+        e.reply('今天，你去给木鱼买精油。突然，一个老者跳了出来，拦住了你的去路。“嘿嘿，小友，我看你骨骼精奇，我把我这本书赠与你，如何？”\n你看着老者，陷入沉思...\n1：欸嘿，不要白不要！\n2：放肆！我有成帝之姿，今日你这老者用破书羞辱我？\n3：拒绝老者，径直离开',true)
         this.setContext('Event1')
      }else if(num === 2){
-        e.reply('你在闲逛的时候看到一个小女孩在乞讨，在经过她时，她用她那双卡姿兰大眼睛含情脉脉地看着你\n你陷入了沉思...\n1:施舍与她一些银两\n2:把她带回家当童养媳玩养成游戏。\n3:跟她犯贱')
+        e.reply('你在闲逛的时候看到一个小女孩在乞讨，在经过她时，她用她那双卡姿兰大眼睛含情脉脉地看着你\n你陷入了沉思...\n1:施舍与她一些银两\n2:把她带回家当童养媳玩养成游戏。\n3:跟她犯贱',true)
         this.setContext('Event2')
      }else{
-        e.reply('没有遇到什么趣事哦，你很累，休息下吧！')
+        e.reply('没有遇到什么趣事哦，你很累，休息下吧！',true)
         USER_DATA['cd']['random'] = CURRENT_SECOND + configData['cd_random'];
         // 将更新后的玩家数据存储到数据库
         storagePlayerData(ID[0], USER_DATA);
