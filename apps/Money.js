@@ -67,7 +67,7 @@ export class Mn extends plugin {
          let MoneyNumber = lodash.random(configData['min_money'], configData['max_money']);
     
          // 构建回复消息
-         let msg = `摆摊赚钱咯~~${MoneyNumber}银两！\r目前银两：${USER_MONEY + MoneyNumber}`;
+         let msg = `摆摊赚钱咯~~赚了${MoneyNumber}银两！\r目前银两：${USER_MONEY + MoneyNumber}`;
     
           // 更新玩家的冷却时间和银两
          USER_DATA['cd']['money'] = CURRENT_SECOND + configData['cd_money'];
@@ -78,7 +78,7 @@ export class Mn extends plugin {
          storagePlayerData(ID[0], USER_DATA);
     
          // 向用户发送打工结束的信息
-         return e.reply([msg]);
+         return e.reply([msg],true);
     
     
     }
