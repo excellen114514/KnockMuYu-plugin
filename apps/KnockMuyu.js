@@ -77,7 +77,7 @@ export class Kc extends plugin {
      storagePlayerData(ID[0], USER_DATA);
 
      // 向用户发送敲木鱼成功的信息
-     return e.reply([msg]);
+     return e.reply([msg],true);
 
 
 }
