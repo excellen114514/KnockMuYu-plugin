@@ -9,7 +9,7 @@ import {
     isPlayerExist
 } from '../function.js';
 import plugin from '../../../lib/plugins/plugin.js'
-const Random =/^(#|\/)?奇闻轶事|奇遇$/
+const Random =/^(#|\/)?奇遇$/
 let answer = {}
 export class Kc extends plugin {
     constructor() {
