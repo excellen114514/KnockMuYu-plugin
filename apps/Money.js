@@ -9,7 +9,7 @@ import {
     isPlayerExist
 } from '../function.js';
 
-const Money =/^(#|\/)?摆摊|摆摊赚钱$/
+const Money =/^(#|\/)?摆摊$/
 
 export class Mn extends plugin {
     constructor() {
