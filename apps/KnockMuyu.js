@@ -9,8 +9,6 @@ import {
     isPlayerExist
 } from '../function.js';
 
-
-
 const Knock =/^(#|\/)?敲木鱼$/
 
 export class Kc extends plugin {

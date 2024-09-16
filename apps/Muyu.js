@@ -30,8 +30,9 @@ export class gmy extends plugin {
             storagePlayerData(ID[0], {
             name: e.sender.card || '未设置昵称',
             number: 0,
-            cd: { knock: 0, random: 0},
-            log: { knock: [], random: []}
+            money: 0,
+            cd: { knock: 0, random: 0,money: 0},
+            log: { knock: [], random: [], money: [] }
         })
         e.reply('基础信息创建成功')
      }
@@ -43,7 +44,7 @@ export class gmy extends plugin {
          /** 用户数据 */
          const USER_DATA = await getPlayerData(ID[0])
 
-         msg = `你现在的功德为${USER_DATA['number']}`
+         msg = `你现在的功德为${USER_DATA['number']}，有${USER_DATA['money']}银两`
 
          return e.reply([msg], true)
      } else { // 看别人
@@ -53,7 +54,7 @@ export class gmy extends plugin {
          /** 用户数据 */
          const USER_DATA = await getPlayerData(ID[1])
 
-         msg = `@${USER_DATA['name']}现在的功德为${USER_DATA['number']}`
+         msg = `@${USER_DATA['name']}现在的功德为${USER_DATA['number']}，有${USER_DATA['money']}银两`
          return e.reply([msg], true)
      }
     } 
