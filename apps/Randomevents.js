@@ -157,7 +157,7 @@ export class Kc extends plugin {
             {
                 e.reply('你没有足够的银两！重新选择吧~~')
                 this.setContext('Event2')
-            }
+            }else {
             let KnockNumber = lodash.random(configData['min_random'], configData['max_random']);
             let end1 = `你给了她500银两，功德得到${KnockNumber}!\r目前功德：${USER_NUMBER + KnockNumber},目前银两:${MoneyNumber - 500}`;
             USER_DATA['number'] += KnockNumber;
@@ -170,7 +170,7 @@ export class Kc extends plugin {
         
 
             // 将更新后的玩家数据存储到数据库
-            storagePlayerData(ID[0], USER_DATA);
+            storagePlayerData(ID[0], USER_DATA);}
         }else if(e.msg === '2'){
             let KnockNumber = lodash.random(configData['min_random'], configData['max_random']);
             let end2 = `你把她诱拐回家，过了一天后，有人上报官府说你是人贩子，捕快立刻来到你家并把你抓了起来判死刑。你把一缕元神封存进木鱼，再被判死刑斩首后得以依靠功德复生。功德减${KnockNumber}!\r目前功德：${USER_NUMBER - KnockNumber}`
