@@ -24,9 +24,9 @@ git clone https://github.com/excellen114514/KnockMuYu-plugin.git ./plugins/Knock
 - 那就请给我一个star吧，~~球球惹~~
 
 ## 友链
-[Yunzaibot](https://gitee.com/Le-niao/Yunzai-Bot)
-[Yunzai索引库](https://github.com/yhArcadia/Yunzai-Bot-plugins-index)
-[面包文游](https://gitee.com/Tloml-Starry/Bread-Shop)
+- [Yunzaibot](https://gitee.com/Le-niao/Yunzai-Bot)
+- [Yunzai索引库](https://github.com/yhArcadia/Yunzai-Bot-plugins-index)
+- [面包文游](https://gitee.com/Tloml-Starry/Bread-Shop)
 
 ## 许可证
 
