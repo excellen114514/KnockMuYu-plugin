@@ -23,6 +23,11 @@ git clone https://github.com/excellen114514/KnockMuYu-plugin.git ./plugins/Knock
 ## 如果你喜欢这个项目
 - 那就请给我一个star吧，~~球球惹~~
 
+## 友链
+[Yunzaibot](https://gitee.com/Le-niao/Yunzai-Bot)
+[Yunzai索引库](https://github.com/yhArcadia/Yunzai-Bot-plugins-index)
+[面包文游](https://gitee.com/Tloml-Starry/Bread-Shop)
+
 ## 许可证
 
 本项目使用 [GNU AGPLv3](https://choosealicense.com/licenses/agpl-3.0/) 作为开源许可证。
