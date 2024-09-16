@@ -116,7 +116,7 @@ export class Kc extends plugin {
             this.finish('Events')
             delete answer[e.user_id]
             USER_DATA['cd']['random'] = CURRENT_SECOND + configData['cd_random'];
-            USER_DATA['log']['random'].push(`[${getCurrentDate()}] 加了${KnockNumber}功德`);
+            USER_DATA['log']['random'].push(`[${getCurrentDate()}] 减了${KnockNumber}功德`);
         
 
             // 将更新后的玩家数据存储到数据库
@@ -127,7 +127,7 @@ export class Kc extends plugin {
             this.finish('Events')
             delete answer[e.user_id]
             USER_DATA['cd']['random'] = CURRENT_SECOND + configData['cd_random'];
-        
+            USER_DATA['log']['random'].push(`[${getCurrentDate()}] 结束随机事件，没有加减功德`);
 
             // 将更新后的玩家数据存储到数据库
             storagePlayerData(ID[0], USER_DATA);
