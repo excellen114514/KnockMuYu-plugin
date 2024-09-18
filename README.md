@@ -22,6 +22,7 @@ git clone https://github.com/excellen114514/KnockMuYu-plugin.git ./plugins/Knock
 
 ## 如果你喜欢这个项目
 - 那就请给我一个star吧，~~球球惹~~
+- 由于最近学业繁忙 我很少有时间维护与更新 所以有bug一定要在iu提！神志不清有可能就写bug出来了（
 
 ## 友链
 - [Yunzaibot](https://gitee.com/Le-niao/Yunzai-Bot)
