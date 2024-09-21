@@ -1,4 +1,4 @@
-## KnockMuYu-plugin 1.0.0
+## KnockMuYu-plugin 1.1.1
 #### 一个适用于yunzai的小型文游
 
 # 这是一个敲木鱼就可以成仙的世界......
@@ -12,7 +12,7 @@ git clone --depth=1 https://github.com/excellen114514/KnockMuYu-plugin.git ./plu
 > 插件并非完全自写，核心代码来自于[面包文游](https://gitee.com/Tloml-Starry/Bread-Shop),仅仅是在其基础简单改写
 > (~~如果我不小心侵权了我马上删掉跑路，对不起对不起对不起!🙏🙏~~)
 ---
-### 已经实现和要实现的功能
+#### 已经实现和要实现的功能
 - [x] 查看木鱼
 - [x] 敲木鱼
 - [x] 奇遇/奇闻轶事
