@@ -18,7 +18,7 @@ git clone --depth=1 https://github.com/excellen114514/KnockMuYu-plugin.git ./plu
 - [x] 奇遇/奇闻轶事
 - [x] 玩家数据更新
 >[!WARNING]
->数据更新是为了后面对等级的开发，提前写出，暂时不需要更新
+>玩家数据更新仅限于旧玩家，新玩家没有必要更新，否则会覆盖原先有的数据
 - [x] 等级突破
 - [x] 图片帮助
 - [ ] 更多的可以提iu，比如扩展随机事件（奇遇）
