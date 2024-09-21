@@ -19,7 +19,7 @@ git clone --depth=1 https://github.com/excellen114514/KnockMuYu-plugin.git ./plu
 - [x] 玩家数据更新
 >[!WARNING]
 >数据更新是为了后面对等级的开发，提前写出，暂时不需要更新
-- [ ] 等级突破
+- [x] 等级突破
 - [x] 图片帮助
 - [ ] 更多的可以提iu，比如扩展随机事件（奇遇）
 ---
