@@ -24,7 +24,9 @@ export class Kc extends plugin {
         const newEntry = {
             mlv: "",
             lv: 0,
-            qy: 0
+            qy: 0,
+            cd: { knock: 0, random: 0,money: 0, break:0},
+            log: { knock: [], random: [], money: [], break:[]}
         };  
         const ID = [e.user_id]
         const currentWorkingDirectory = process.cwd();
