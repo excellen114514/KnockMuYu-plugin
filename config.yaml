@@ -1,13 +1,9 @@
 
-
-
-# 突破所需功德
-level_num: 10000
-
 # 操作冷却 (单位: 秒)
-cd_knock: 42
-cd_random: 50
+cd_knock: 420
+cd_random: 500
 cd_money: 600
+cd_break: 600
 # 操作随机值上限
 max_knock: 3000
 max_random: 2000
