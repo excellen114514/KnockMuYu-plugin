@@ -22,7 +22,7 @@ export class Kc extends plugin {
       if (e.isGroup) 
         return e.reply(['覆盖数据是危险的，仅能在私聊覆盖'])
         const newEntry = {
-            mlv: 0,
+            mlv: "",
             lv: 0,
             qy: 0
         };  
