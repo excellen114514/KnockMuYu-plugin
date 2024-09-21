@@ -1,4 +1,4 @@
-## KnockMuYu-plugin 1.1.1
+## KnockMuYu-plugin 1.1.3
 #### 一个适用于yunzai的小型文游
 
 # 这是一个敲木鱼就可以成仙的世界......
