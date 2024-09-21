@@ -31,6 +31,9 @@ export class gmy extends plugin {
             name: e.sender.card || '未设置昵称',
             number: 0,
             money: 0,
+            mlv: 0,
+            lv: 0,
+            qy: 0,
             cd: { knock: 0, random: 0,money: 0},
             log: { knock: [], random: [], money: [] }
         })
