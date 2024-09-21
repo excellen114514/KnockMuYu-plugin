@@ -31,11 +31,11 @@ export class gmy extends plugin {
             name: e.sender.card || '未设置昵称',
             number: 0,
             money: 0,
-            mlv: 0,
+            mlv: "",
             lv: 0,
             qy: 0,
-            cd: { knock: 0, random: 0,money: 0},
-            log: { knock: [], random: [], money: [] }
+            cd: { knock: 0, random: 0,money: 0, break:0},
+            log: { knock: [], random: [], money: [], break:[]}
         })
         e.reply('基础信息创建成功')
      }
@@ -47,7 +47,7 @@ export class gmy extends plugin {
          /** 用户数据 */
          const USER_DATA = await getPlayerData(ID[0])
 
-         msg = `你现在的功德为${USER_DATA['number']}，有${USER_DATA['money']}银两`
+         msg = `你现在的功德为${USER_DATA['number']}，有${USER_DATA['money']}银两，等级为${USER_DATA['lv']}!境界为${USER_DATA['mlv']}`
 
          return e.reply([msg], true)
      } else { // 看别人
@@ -57,7 +57,7 @@ export class gmy extends plugin {
          /** 用户数据 */
          const USER_DATA = await getPlayerData(ID[1])
 
-         msg = `@${USER_DATA['name']}现在的功德为${USER_DATA['number']}，有${USER_DATA['money']}银两`
+         msg = `@${USER_DATA['name']}现在的功德为${USER_DATA['number']}，有${USER_DATA['money']}银两，等级为${USER_DATA['lv']}!境界为${USER_DATA['mlv']}`
          return e.reply([msg], true)
      }
     } 
