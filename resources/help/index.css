@@ -1,0 +1,24 @@
+body {
+    width: 420px;
+}
+
+.menu {
+    font-family: Arial, sans-serif;
+    background-color: #f7f8fb;
+    padding: 10px;
+    border: 1px solid #8bcfe8;
+    border-radius: 5px;
+    width: 400px;
+}
+
+.menu-item {
+    margin-bottom: 5px;
+}
+
+.instruction {
+    font-weight: bold;
+}
+
+.description {
+    color: #429db9;
+}
