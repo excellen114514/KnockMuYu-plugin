@@ -123,7 +123,7 @@ export class gmy extends plugin {
       }else if(USER_LEVEL === 30 && USER_NUMBER >= 18000){
         USER_DATA['cd']['break'] = CURRENT_SECOND + configData['cd_break'];
         USER_DATA['log']['break'].push(`[${getCurrentDate()}]突破了一级,境界加一`);
-        USER_DATA['number'] -= 8000;
+        USER_DATA['number'] -= 18000;
         USER_DATA['lv'] += 1;
         USER_DATA['mlv'] = ciku[3];
         let msg = `你气脉涌动，木鱼泛出金光！刹那间，天地好像为之静止！\n你现在的等级为${USER_LEVEL + 1}，处于${ciku[3]}期！`;
