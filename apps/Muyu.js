@@ -47,7 +47,7 @@ export class gmy extends plugin {
          /** 用户数据 */
          const USER_DATA = await getPlayerData(ID[0])
 
-         msg = `你现在的功德为${USER_DATA['number']}，有${USER_DATA['money']}银两，等级为${USER_DATA['lv']}!境界为${USER_DATA['mlv']}`
+         msg = `你现在的功德为${USER_DATA['number']}，\n有${USER_DATA['money']}银两，\n等级为${USER_DATA['lv']}!\n境界为${USER_DATA['mlv']}`
 
          return e.reply([msg], true)
      } else { // 看别人
@@ -57,7 +57,7 @@ export class gmy extends plugin {
          /** 用户数据 */
          const USER_DATA = await getPlayerData(ID[1])
 
-         msg = `@${USER_DATA['name']}现在的功德为${USER_DATA['number']}，有${USER_DATA['money']}银两，等级为${USER_DATA['lv']}!境界为${USER_DATA['mlv']}`
+         msg = `@${USER_DATA['name']}现在的功德为${USER_DATA['number']}，\n有${USER_DATA['money']}银两，\n等级为${USER_DATA['lv']}!\n境界为${USER_DATA['mlv']}`
          return e.reply([msg], true)
      }
     } 
