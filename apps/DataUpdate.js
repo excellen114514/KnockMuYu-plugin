@@ -25,10 +25,10 @@ export class Kc extends plugin {
     async gupdate(e){
       if (e.isGroup) 
       return e.reply(['覆盖数据是危险的，仅能在私聊覆盖'])
+       const ID = [e.user_id]
       if (!isPlayerExist(ID[0])) {
         e.reply("你还没有木鱼哦~发送 查看木鱼 来获得你的第一个木鱼吧！")
       }
-      const ID = [e.user_id]
       const USER_DATA = await getPlayerData(ID[0]);
       if(USER_DATA.hasOwnProperty('lv')){
         
