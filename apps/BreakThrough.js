@@ -185,7 +185,7 @@ export class gmy extends plugin {
         // 将更新后的玩家数据存储到数据库
         storagePlayerData(ID[0], USER_DATA);
         e.reply([msg])
-      }else if(USER_LEVEL === 70 && USER_NUMBER >= 30000){
+      }else if(USER_LEVEL === 60 && USER_NUMBER >= 30000){
         USER_DATA['cd']['break'] = CURRENT_SECOND + configData['cd_break'];
         USER_DATA['log']['break'].push(`[${getCurrentDate()}]突破了一级,mlv+1`);
         USER_DATA['number'] -= 30000;
