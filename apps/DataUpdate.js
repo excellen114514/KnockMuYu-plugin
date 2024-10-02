@@ -25,7 +25,7 @@ export class Kc extends plugin {
     async gupdate(e){
       if (e.isGroup) 
       return e.reply(['覆盖数据是危险的，仅能在私聊覆盖'])
-       const ID = [e.user_id]
+      const ID = [e.user_id]
       if (!isPlayerExist(ID[0])) {
         e.reply("你还没有木鱼哦~发送 查看木鱼 来获得你的第一个木鱼吧！")
       }
@@ -41,7 +41,7 @@ export class Kc extends plugin {
       if(USER_DATA.hasOwnProperty('mlv')){
         e.reply(`mlv已经存在，开始写入下一个键值`)
       }else {
-        const newEntry ={mlv: "凡人"};
+        const newEntry = {mlv: ""};
         writeGameData(ID, newEntry)
         e.reply(`mlv写入完成`)
       }
@@ -52,9 +52,5 @@ export class Kc extends plugin {
         writeGameData(ID, newEntry)
         e.reply(`qy写入完成`)
       }
-      const newEntry ={ cd: { knock: 0, random: 0,money: 0, break:0},
-      log: { knock: [], random: [], money: [], break:[]}}
-      writeGameData(ID, newEntry)
-      return e.reply(`完成，重新刷新冷却与日志`)
     }
 }
