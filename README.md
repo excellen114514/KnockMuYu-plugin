@@ -1,4 +1,4 @@
-## KnockMuYu-plugin 1.1.5
+## KnockMuYu-plugin 1.1.7
 #### 一个适用于yunzai的小型文游
 
 # 这是一个敲木鱼就可以成仙的世界......
@@ -16,6 +16,7 @@ git clone --depth=1 https://github.com/excellen114514/KnockMuYu-plugin.git ./plu
 - [x] 查看木鱼
 - [x] 敲木鱼
 - [x] 奇遇
+- [x] 决斗 
 - [x] 玩家数据更新
 >[!WARNING]
 >如果出现命令无响应或者不合理情况，请发送 查看木鱼 检查是否存在undefined 如果存在则使用此功能
