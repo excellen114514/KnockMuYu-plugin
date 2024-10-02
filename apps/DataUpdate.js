@@ -4,7 +4,7 @@ import {
   isPlayerExist,
   writeGameData
 } from '../function.js';
-
+let count = 1
 const Gupdate =/^(#|\/)?玩家数据更新$/
 export class Kc extends plugin {
     constructor() {
@@ -30,27 +30,29 @@ export class Kc extends plugin {
         e.reply("你还没有木鱼哦~发送 查看木鱼 来获得你的第一个木鱼吧！")
       }
       const USER_DATA = await getPlayerData(ID[0]);
-      if(USER_DATA.hasOwnProperty('lv')){
-        
-        e.reply(`lv已经存在,开始写入下一个键值`)
-       }else {
-        const newEntry = {lv: 0};
-        writeGameData(ID, newEntry);
-        e.reply(`lv写入完成`)
-       }
-      if(USER_DATA.hasOwnProperty('mlv')){
-        e.reply(`mlv已经存在，开始写入下一个键值`)
-      }else {
-        const newEntry = {mlv: ""};
-        writeGameData(ID, newEntry)
-        e.reply(`mlv写入完成`)
+
+      if ('lv' in USER_DATA) {
+        e.reply('lv已经存在,开始写入下一个键值');
+      } else {
+        const newEntry = { lv: 0 };
+        await writeGameData(ID, newEntry);
+        e.reply('lv写入完成');
       }
-      if(USER_DATA.hasOwnProperty('qy')){
-        e.reply(`qy已经存在，开始写入下一个键值`)
-      }else {
-        const newEntry ={qy: 0};
-        writeGameData(ID, newEntry)
-        e.reply(`qy写入完成`)
+      
+      if ('mlv' in USER_DATA) {
+        e.reply('mlv已经存在，开始写入下一个键值');
+      } else {
+        const newEntry = { mlv: "" };
+        await writeGameData(ID, newEntry);
+        e.reply('mlv写入完成');
+      }
+      
+      if ('qy' in USER_DATA) {
+        e.reply('qy已经存在，开始写入下一个键值');
+      } else {
+        const newEntry = { qy: 0 };
+        await writeGameData(ID, newEntry);
+        e.reply('qy写入完成');
       }
     }
 }
