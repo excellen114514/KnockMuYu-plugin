@@ -56,21 +56,20 @@ export function getCurrentDate() {
 
 export async function writeGameData(ID, newEntry){
     const currentWorkingDirectory = process.cwd();
-          // 定义保存文件的路径
+    // 定义保存文件的路径
     const filePath = path.join(currentWorkingDirectory, 'plugins' , 'KnockMuYu-plugin', 'data', 'player', ID + '.json');
-    
+
     const data = await fsp.readFile(filePath)
             // 解析现有 JSON 数据为一个对象
     let jsonData = JSON.parse(data);
-      
+
             // 添加新的键值对
     jsonData = { ...jsonData, ...newEntry };
-      
+
             // 将修改后的对象转换回 JSON 字符串
     const updatedJsonString = JSON.stringify(jsonData, null, 2);
-      
+
             // 将更新后的 JSON 字符串写回文件
     return fsp.writeFile(filePath, updatedJsonString);
-           
-        
+
 }
