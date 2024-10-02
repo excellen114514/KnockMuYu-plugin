@@ -4,7 +4,7 @@ import {
   isPlayerExist,
   writeGameData
 } from '../function.js';
-let count = 1
+
 const Gupdate =/^(#|\/)?玩家数据更新$/
 export class Kc extends plugin {
     constructor() {
@@ -54,5 +54,10 @@ export class Kc extends plugin {
         await writeGameData(ID, newEntry);
         e.reply('qy写入完成');
       }
+       
+      const newEntry = {cd: { knock: 0, random: 0,money: 0, break:0, fight: 0},
+      log: { knock: [], random: [], money: [], break:[], fight: []}};
+      await writeGameData(ID, newEntry)
+      e.reply('刷新冷却和清空日志，请稍后。。。')
     }
 }

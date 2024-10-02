@@ -34,8 +34,8 @@ export class gmy extends plugin {
             mlv: "",
             lv: 0,
             qy: 0,
-            cd: { knock: 0, random: 0,money: 0, break:0},
-            log: { knock: [], random: [], money: [], break:[]}
+            cd: { knock: 0, random: 0,money: 0, break:0, fight: 0},
+            log: { knock: [], random: [], money: [], break:[], fight: []}
         })
         e.reply('基础信息创建成功')
      }
