@@ -4,6 +4,7 @@ cd_knock: 420
 cd_random: 500
 cd_money: 600
 cd_break: 600
+cd_fight: 600
 # 操作随机值上限
 max_knock: 30000
 max_random: 20000
