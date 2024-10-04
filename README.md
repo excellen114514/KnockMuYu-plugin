@@ -1,4 +1,4 @@
-## KnockMuYu-plugin 1.1.7
+## KnockMuYu-plugin 1.2.1
 #### 一个适用于yunzai的小型文游
 
 # 这是一个敲木鱼就可以成仙的世界......
@@ -20,7 +20,9 @@ git clone --depth=1 https://github.com/excellen114514/KnockMuYu-plugin.git ./plu
 - [x] 玩家数据更新
 >[!WARNING]
 >如果出现命令无响应或者不合理情况，请发送 查看木鱼 检查是否存在undefined 如果存在则使用此功能
-- [x] 等级突破（待完善）
+>在玩家数据更新后一定要发送境界更新
+- [x] 等级突破
+- [x] 境界突破 
 - [x] 木鱼帮助
 - [ ] 外出游历
 - [x] 渡劫(等级达到80级后不能再通过突破来提升等级)
@@ -31,6 +33,7 @@ git clone --depth=1 https://github.com/excellen114514/KnockMuYu-plugin.git ./plu
 ## 如果你喜欢这个项目
 - 那就请给我一个star吧，~~球球惹~~
 - 由于最近学业繁忙 我很少有时间维护与更新 所以有bug一定要在iu提！神志不清有可能就写bug出来了（
+- 联系我：2462036961
 ---
 ## 友链
 - [Yunzaibot](https://gitee.com/Le-niao/Yunzai-Bot)
