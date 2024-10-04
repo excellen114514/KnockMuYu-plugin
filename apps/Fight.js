@@ -67,7 +67,7 @@ export class fmy extends plugin {
             return e.reply([`你的对手刚经历决斗，不能再和ta决斗哦~~`]);
           } 
            e.reply(`欢迎来看${USER_DATA['name']}和${USER_DATA1['name']}决斗，决斗将会在五秒后宣布结果！`)
-           let fightg = lodash.random(1, 100);
+           const fightg = Math.random();
            let count = 5;
            const interval = setInterval(() => {
             console.log(`${count}秒后执行下一个`);
@@ -78,10 +78,10 @@ export class fmy extends plugin {
               clearInterval(interval);
 
               if((USER_LEVEL > USER_LEVEL1) && (USER_MLEVEL > USER_MLEVEL1)){
-                if(fightg >= 20){
+                if(fightg < 0.80){
                   USER_DATA['number'] += 15000;
                   USER_DATA1['number'] -= 15000;
-                  USER_DATA['lv'] += 3;
+                  USER_DATA['lv'] += 2;
                   USER_DATA1['lv'] -= 2;
                   USER_DATA['cd']['fight'] = CURRENT_SECOND + configData['cd_fight'];
                   USER_DATA['log']['fight'].push(`[${getCurrentDate()}]决斗一次 `);
@@ -89,7 +89,7 @@ export class fmy extends plugin {
                   USER_DATA1['log']['fight'].push(`[${getCurrentDate()}]决斗一次 `);
                   storagePlayerData(ID[0], USER_DATA);
                   storagePlayerData(ID[1], USER_DATA1);
-                  e.reply(`毫无悬念的战斗！本局的胜者是${USER_DATA['name']}!\n胜者加15000功德，败者失去同等功德！\n胜者等级加3，败者等级减2！`)
+                  e.reply(`毫无悬念的战斗！本局的胜者是${USER_DATA['name']}!\n胜者加15000功德，败者失去同等功德！\n胜者等级加2，败者等级减2！`)
                 }else{
                   USER_DATA['number'] -= 8000;
                   USER_DATA1['number'] += 9000;
@@ -104,18 +104,18 @@ export class fmy extends plugin {
                   e.reply(`令人震惊！${USER_DATA1['name']}以微薄之势赢下比赛！\n胜者加9000功德，败者失去8000功德\n胜者加1等级，败者失去2等级！`)
                 }
              }else{
-                if(fightg >= 20){
+                if(fightg < 0.80){
                   USER_DATA['number'] -= 15000;
                   USER_DATA1['number'] += 15000;
                   USER_DATA['lv'] -= 2;
-                  USER_DATA1['lv'] += 3;
+                  USER_DATA1['lv'] += 2;
                   USER_DATA['cd']['fight'] = CURRENT_SECOND + configData['cd_fight'];
                   USER_DATA['log']['fight'].push(`[${getCurrentDate()}]决斗一次 `);
                   USER_DATA1['cd']['fight'] = CURRENT_SECOND + configData['cd_fight'];
                   USER_DATA1['log']['fight'].push(`[${getCurrentDate()}]决斗一次 `);
                   storagePlayerData(ID[0], USER_DATA);
                   storagePlayerData(ID[1], USER_DATA1);
-                  e.reply(`毫无悬念的战斗！本局的胜者是${USER_DATA1['name']}!\n胜者加15000功德，败者失去同等功德！\n胜者等级加3，败者等级减2！`) 
+                  e.reply(`毫无悬念的战斗！本局的胜者是${USER_DATA1['name']}!\n胜者加15000功德，败者失去同等功德！\n胜者等级加2，败者等级减2！`) 
                 }else{
                   USER_DATA['number'] += 9000;
                   USER_DATA1['number'] -= 8000;
