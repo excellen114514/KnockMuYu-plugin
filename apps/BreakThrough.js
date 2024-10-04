@@ -398,7 +398,7 @@ export class gmy extends plugin {
       storagePlayerData(ID[0], USER_DATA);
       e.reply(`境界突破！现在你的境界为${ciku[12]}`);
     }else{
-      e.reply(`你已经达到了道祖，境界不能再突破了`)
+      e.reply(`你已经达到了道祖，境界不能再突破了(你要是没到道祖就看到这条消息，那就是功德不够！`)
     }
 
 }
