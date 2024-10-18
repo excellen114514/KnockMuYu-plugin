@@ -1,4 +1,4 @@
-## KnockMuYu-plugin 1.2.1
+## KnockMuYu-plugin 1.2.3
 #### 一个适用于yunzai的小型文游
 
 # 这是一个敲木鱼就可以成仙的世界......
@@ -27,6 +27,7 @@ git clone --depth=1 https://github.com/excellen114514/KnockMuYu-plugin.git ./plu
 - [ ] 外出游历
 - [x] 渡劫(等级达到80级后不能再通过突破来提升等级)
 - [ ] 交易系统
+- [x] 赌银两+银两数 
 - [ ] 背包
 - [ ] 更多的可以提iu，比如扩展随机事件（奇遇）
 ---
