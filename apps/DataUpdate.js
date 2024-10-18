@@ -68,10 +68,10 @@ export class Kc extends plugin {
         e.reply('mlvv写入完成');
       }
        
-      const newEntry = {cd: { knock: 0, random: 0,money: 0, break:0, fight: 0},
-      log: { knock: [], random: [], money: [], break:[], fight: []}};
+      const newEntry = {cd: { knock: 0, random: 0, money: 0, break:0, fight: 0, bet: 0},
+      log: { knock: [], random: [], money: [], break:[], fight: [], bet: []}};
       await writeGameData(ID, newEntry)
-      e.reply('刷新冷却和清空日志')
+      e.reply('更新冷却和清空日志')
     }
 
     async mupdate(e){
