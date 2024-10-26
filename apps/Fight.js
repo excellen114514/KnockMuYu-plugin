@@ -1,4 +1,4 @@
-import lodash from 'lodash';
+
 import {
     getPlayerData,
     readConfiguration,
@@ -81,15 +81,13 @@ export class fmy extends plugin {
                 if(fightg < 0.80){
                   USER_DATA['number'] += 15000;
                   USER_DATA1['number'] -= 15000;
-                  USER_DATA['lv'] += 2;
-                  USER_DATA1['lv'] -= 2;
                   USER_DATA['cd']['fight'] = CURRENT_SECOND + configData['cd_fight'];
                   USER_DATA['log']['fight'].push(`[${getCurrentDate()}]决斗一次 `);
                   USER_DATA1['cd']['fight'] = CURRENT_SECOND + configData['cd_fight'];
                   USER_DATA1['log']['fight'].push(`[${getCurrentDate()}]决斗一次 `);
                   storagePlayerData(ID[0], USER_DATA);
                   storagePlayerData(ID[1], USER_DATA1);
-                  e.reply(`毫无悬念的战斗！本局的胜者是${USER_DATA['name']}!\n胜者加15000功德，败者失去同等功德！\n胜者等级加2，败者等级减2！`)
+                  e.reply(`毫无悬念的战斗！本局的胜者是${USER_DATA['name']}!\n胜者加15000功德，败者失去同等功德！`)
                 }else{
                   USER_DATA['number'] -= 8000;
                   USER_DATA1['number'] += 9000;
@@ -107,15 +105,13 @@ export class fmy extends plugin {
                 if(fightg < 0.80){
                   USER_DATA['number'] -= 15000;
                   USER_DATA1['number'] += 15000;
-                  USER_DATA['lv'] -= 2;
-                  USER_DATA1['lv'] += 2;
                   USER_DATA['cd']['fight'] = CURRENT_SECOND + configData['cd_fight'];
                   USER_DATA['log']['fight'].push(`[${getCurrentDate()}]决斗一次 `);
                   USER_DATA1['cd']['fight'] = CURRENT_SECOND + configData['cd_fight'];
                   USER_DATA1['log']['fight'].push(`[${getCurrentDate()}]决斗一次 `);
                   storagePlayerData(ID[0], USER_DATA);
                   storagePlayerData(ID[1], USER_DATA1);
-                  e.reply(`毫无悬念的战斗！本局的胜者是${USER_DATA1['name']}!\n胜者加15000功德，败者失去同等功德！\n胜者等级加2，败者等级减2！`) 
+                  e.reply(`毫无悬念的战斗！本局的胜者是${USER_DATA1['name']}!\n胜者加15000功德，败者失去同等功德！`) 
                 }else{
                   USER_DATA['number'] += 9000;
                   USER_DATA1['number'] -= 8000;

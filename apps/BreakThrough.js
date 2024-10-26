@@ -70,11 +70,13 @@ export class gmy extends plugin {
             return e.reply([`突破自身是很耗神费力的！暂时不能突破哦~~\n${remainingSeconds}秒冷却`]);
         }
       }
-        let mlv = (USER_DATA['mlv'] += 1);    
+        if(USER_DATA['mlv'] >= 7) return e.reply(`你的境界太高了，请渡劫！`)
+
+        let mlv = (USER_DATA['mlv'] += 1) * 10000 ;    
         if(USER_NUMBER >= mlv ){
           USER_DATA['cd']['break'] = CURRENT_SECOND + configData['cd_break'];
           USER_DATA['log']['break'].push(`[${getCurrentDate()}]突破了一级`);
-          USER_DATA['number'] -= mlv * 10000 ;
+          USER_DATA['number'] -= mlv;
           USER_DATA['lv'] += 1;
           let msg = `你气脉涌动，木鱼泛出金光！刹那间，天地好像为之静止！\n你现在的等级为${USER_LEVEL + 1}`;
           // 将更新后的玩家数据存储到数据库
@@ -120,7 +122,7 @@ export class gmy extends plugin {
            return e.reply([`抗下雷劫是很耗神费力的！暂时不能渡劫哦~~\n${remainingSeconds}秒冷却`]);
        }
       }
-        if(USER_LEVEL < 80 ){
+        if(USER_DATA['mlv'] < 7 ){
            e.reply(`你的境界不够！`)
           return 
         }else{
@@ -147,7 +149,7 @@ export class gmy extends plugin {
              USER_DATA['lv'] += 2;
              let dujie = Leijie * 34000
              USER_DATA['number'] -= dujie
-             e.reply(`你扛下了所有雷劫！等级加5\n当前等级为${USER_LEVEL + 1}`)
+             e.reply(`你扛下了所有雷劫！等级加2\n当前等级为${USER_LEVEL + 1}`)
              storagePlayerData(ID[0], USER_DATA);
     }
     count++;
@@ -184,16 +186,16 @@ export class gmy extends plugin {
 
      // 根据剩余时间向用户发送消息
      if (minutes > 0) {
-        return e.reply([`境界突破是很耗神费力的！暂时不能渡劫哦~~\n还有${minutes}分${remainingSeconds}秒冷却`]);
+        return e.reply([`境界突破是很耗神费力的！暂时不能突破哦~~\n还有${minutes}分${remainingSeconds}秒冷却`]);
      } else {
-        return e.reply([`境界突破是很耗神费力的！暂时不能渡劫哦~~\n${remainingSeconds}秒冷却`]);
+        return e.reply([`境界突破是很耗神费力的！暂时不能突破哦~~\n${remainingSeconds}秒冷却`]);
      }
     }
     let mlv = (USER_DATA['mlv'] + 1) * 20 ;
     let mlv1 = (USER_DATA['mlv'] + 1);
     if(USER_LEVEL >= mlv && USER_NUMBER >= mlv1){
       if(USER_DATA['mlv'] === 12 ){
-        return e.reply(`境界圆满！`);
+        return e.reply(`境界圆满！不需要突破了！`);
       }
       USER_DATA['cd']['break'] = CURRENT_SECOND + configData['cd_break'];
       USER_DATA['log']['break'].push(`[${getCurrentDate()}]境界突破一级`);

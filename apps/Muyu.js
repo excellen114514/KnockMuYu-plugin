@@ -48,33 +48,8 @@ export class gmy extends plugin {
      if (!ID[1]) { // 看自己
          /** 用户数据 */
          const USER_DATA = await getPlayerData(ID[0])
-         if(USER_DATA['mlv'] === 0){
-            mlv = ciku[0];
-         }else if(USER_DATA['mlv'] === 1){
-            mlv = ciku[1];
-         }else if(USER_DATA['mlv'] === 2){
-            mlv = ciku[2];
-         }else if(USER_DATA['mlv'] === 3){
-            mlv = ciku[3];
-         }else if(USER_DATA['mlv'] === 4){
-            mlv = ciku[4];
-         }else if(USER_DATA['mlv'] === 5){
-            mlv = ciku[5];
-         }else if(USER_DATA['mlv'] === 6){
-            mlv = ciku[6];
-         }else if(USER_DATA['mlv'] === 7){
-            mlv = ciku[7];
-         }else if(USER_DATA['mlv'] === 8){
-            mlv = ciku[8];
-         }else if(USER_DATA['mlv'] === 9){
-            mlv = ciku[9];
-         }else if(USER_DATA['mlv'] === 10){
-            mlv = ciku[10];
-         }else if(USER_DATA['mlv'] === 11){
-            mlv = ciku[11];
-         }else if(USER_DATA['mlv'] === 12){
-            mlv = ciku[12];
-         }
+         let mlvCount = USER_DATA['mlv'];
+         mlv = ciku[mlvCount];
          msg = `你现在的功德为${USER_DATA['number']}，\n有${USER_DATA['money']}银两，\n等级为${USER_DATA['lv']}!\n境界为${mlv}`
 
          return e.reply([msg], true)
@@ -84,33 +59,8 @@ export class gmy extends plugin {
 
          /** 用户数据 */
          const USER_DATA = await getPlayerData(ID[1])
-         if(USER_DATA['mlv'] === 0){
-            mlv = ciku[0];
-         }else if(USER_DATA['mlv'] === 1){
-            mlv = ciku[1];
-         }else if(USER_DATA['mlv'] === 2){
-            mlv = ciku[2];
-         }else if(USER_DATA['mlv'] === 3){
-            mlv = ciku[3];
-         }else if(USER_DATA['mlv'] === 4){
-            mlv = ciku[4];
-         }else if(USER_DATA['mlv'] === 5){
-            mlv = ciku[5];
-         }else if(USER_DATA['mlv'] === 6){
-            mlv = ciku[6];
-         }else if(USER_DATA['mlv'] === 7){
-            mlv = ciku[7];
-         }else if(USER_DATA['mlv'] === 8){
-            mlv = ciku[8];
-         }else if(USER_DATA['mlv'] === 9){
-            mlv = ciku[9];
-         }else if(USER_DATA['mlv'] === 10){
-            mlv = ciku[10];
-         }else if(USER_DATA['mlv'] === 11){
-            mlv = ciku[11];
-         }else if(USER_DATA['mlv'] === 12){
-            mlv = ciku[12];
-         }
+         let mlvCount = USER_DATA['mlv'];
+         mlv = ciku[mlvCount];
          msg = `@${USER_DATA['name']}现在的功德为${USER_DATA['number']}，\n有${USER_DATA['money']}银两，\n等级为${USER_DATA['lv']}!\n境界为${mlv}`
          return e.reply([msg], true)
      }
