@@ -37,7 +37,7 @@ export class gmy extends plugin {
     }
 
     async break(e){
-        if (e.isGroup) 
+        if (!e.isGroup) 
             return e.reply(['木鱼只能在群聊敲哦~'])
         /** 配置数据 */
         const configData = await readConfiguration()
