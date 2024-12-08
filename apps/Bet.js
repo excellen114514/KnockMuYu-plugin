@@ -33,7 +33,7 @@ export class Kc extends plugin {
     }
 
     async bet(e){
-        if (e.isGroup) 
+        if (!e.isGroup) 
             return e.reply(['木鱼只能在群聊敲哦~'])
         /** 配置数据 */
         
