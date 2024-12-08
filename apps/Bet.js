@@ -11,7 +11,7 @@ import {
 
 const Bet =/^(#|\/)?赌银两(.*)$/
 const AllBet =/^(#|\/)?梭哈$/
-
+let smoneyres = ``;
 export class Kc extends plugin {
     constructor() {
         super({
@@ -33,10 +33,10 @@ export class Kc extends plugin {
     }
 
     async bet(e){
-        if (!e.isGroup) 
+        if (e.isGroup) 
             return e.reply(['木鱼只能在群聊敲哦~'])
         /** 配置数据 */
-        const configData = await readConfiguration()
+        
         const ID = [e.user_id]
         if (!isPlayerExist(ID[0])) {
             e.reply("你还没有木鱼哦~发送 查看木鱼 来获得你的第一个木鱼吧！")
@@ -74,44 +74,14 @@ export class Kc extends plugin {
          } 
          //只保留赌以外的字段。写入变量
          smoney = smoney.replace(/#|赌银两/g, "").trim();
+         smoneyres = smoney;
          console.log(smoney);
-         let msg = `你来到了赌坊，带上了你的${smoney}银两，准备大展身手......\n5秒后宣布赌局结果！`;
-         await e.reply([msg]);
-         let count = 5;
-         const beting = Math.random();
-         
-         const interval = setInterval(() => {
-         console.log(`${count}秒后执行下一个`);
-         count--;
-         if (count <= 0) {
-           clearInterval(interval);
-           if(beting < 0.50){
-            let end = `真遗憾，你赌输了，失去了${smoney}银两！目前银两：${USER_MONEY - smoney}`
-            USER_DATA['cd']['bet'] = CURRENT_SECOND + configData['cd_bet'];
-            USER_DATA['log']['bet'].push(`[${getCurrentDate()}] 输了${smoney}银两`);
-            USER_DATA['money'] -= smoney;
-       
-            // 将更新后的玩家数据存储到数据库
-            storagePlayerData(ID[0], USER_DATA);
-            return e.reply([end])
-           }else{
-            let MoneyNumber = lodash.random(configData['min_bet'], configData['max_bet']);
-            let end = `你赌赢了，得到了${MoneyNumber}银两！目前银两：${USER_MONEY + MoneyNumber}`
-            USER_DATA['cd']['bet'] = CURRENT_SECOND + configData['cd_bet'];
-            USER_DATA['log']['bet'].push(`[${getCurrentDate()}] 赢了${MoneyNumber}银两`);
-            USER_DATA['money'] += MoneyNumber;
-       
-            // 将更新后的玩家数据存储到数据库
-            storagePlayerData(ID[0], USER_DATA);
-            return e.reply([end])
-           }
-         }
-         }, 1000);
-        
-    }
+         await e.reply(`你投入了${smoney}银两，发送“大”或“小”来猜\n(提示:1,2,3为小,4,5,6为大)`, true)
+         this.setContext('guess');
+        }      
 
     async allbet(e){
-            if (!e.isGroup) 
+            if (e.isGroup) 
                 return e.reply(['木鱼只能在群聊敲哦~'])
             /** 配置数据 */
             const configData = await readConfiguration()
@@ -147,41 +117,61 @@ export class Kc extends plugin {
             }
 
             let smoney = USER_MONEY;
+            smoneyres = smoney;
             console.log(smoney);
-         let msg = `你来到了赌坊，带上了你的${smoney}银两，准备大展身手......\n5秒后宣布赌局结果！`;
-         await e.reply([msg]);
-         let count = 5;
-         const beting = Math.random();
-         
-         const interval = setInterval(() => {
-         console.log(`${count}秒后执行下一个`);
-         count--;
-         if (count <= 0) {
-           clearInterval(interval);
-           if(beting < 0.50){
-            let end = `真遗憾，你赌输了，失去了${smoney}银两！目前银两：${USER_MONEY - smoney}`
-            USER_DATA['cd']['bet'] = CURRENT_SECOND + configData['cd_bet'];
-            USER_DATA['log']['bet'].push(`[${getCurrentDate()}] 输了${smoney}银两`);
-            USER_DATA['money'] -= smoney;
-       
-            // 将更新后的玩家数据存储到数据库
-            storagePlayerData(ID[0], USER_DATA);
-            return e.reply([end])
-           }else{
-            let MoneyNumber = lodash.random(configData['min_bet'], configData['max_bet']);
-            let end = `你赌赢了，得到了${MoneyNumber}银两！目前银两：${USER_MONEY + MoneyNumber}`
-            USER_DATA['cd']['bet'] = CURRENT_SECOND + configData['cd_bet'];
-            USER_DATA['log']['bet'].push(`[${getCurrentDate()}] 赢了${MoneyNumber}银两`);
-            USER_DATA['money'] += MoneyNumber;
-       
-            // 将更新后的玩家数据存储到数据库
-            storagePlayerData(ID[0], USER_DATA);
-            return e.reply([end])
-           }
-         }
-         }, 1000);
+            await e.reply(`你投入了${smoney}银两，发送“大”或“小”来猜\n(提示:1,2,3为小,4,5,6为大)`, true)
+            this.setContext('guess');
 
 
     }
-}
 
+    async guess(e){
+        const ID = [e.user_id]
+        const configData = await readConfiguration();
+        const USER_DATA = await getPlayerData(ID[0]);
+        const CURRENT_SECOND = timestampToSeconds(Date.now());
+        let smoney = smoneyres; 
+        // 获取玩家的当前银两
+        const USER_MONEY = USER_DATA['money'];
+        const beting = Math.floor(Math.random() * 6) + 1;
+        let betres = await bettres(beting);
+        console.log(beting, betres);
+        e = this.e
+        console.log(e.msg);
+        if(e.msg !== betres){
+            let end = `真遗憾，你赌输了，结果是${beting}!失去了${smoney}银两！目前银两：${USER_MONEY - smoney}`
+            USER_DATA['cd']['bet'] = CURRENT_SECOND + configData['cd_bet'];
+            USER_DATA['log']['bet'].push(`[${getCurrentDate()}] 输了${smoney}银两`);
+            USER_DATA['money'] -= smoney;
+        
+            // 将更新后的玩家数据存储到数据库
+            storagePlayerData(ID[0], USER_DATA);
+            this.finish('guess')
+            return e.reply([end])
+            }else{
+            let MoneyNumber = lodash.random(configData['min_bet'], configData['max_bet']) * 2.5;
+                let end = `你赌赢了，得到了${MoneyNumber}银两！目前银两：${USER_MONEY + MoneyNumber}`
+                USER_DATA['cd']['bet'] = CURRENT_SECOND + configData['cd_bet'];
+                USER_DATA['log']['bet'].push(`[${getCurrentDate()}] 赢了${MoneyNumber}银两`);
+                USER_DATA['money'] += MoneyNumber;
+            
+                // 将更新后的玩家数据存储到数据库
+                storagePlayerData(ID[0], USER_DATA);
+                this.finish('guess')
+                return e.reply([end])
+            }
+    
+        
+
+    }
+}
+async function bettres(beting) {
+    if(beting >= 4){
+        let betres = `大`;
+        return betres
+    }else {
+        let betres = `小`;
+        return betres
+    }
+    
+}
