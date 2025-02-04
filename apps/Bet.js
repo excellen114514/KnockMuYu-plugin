@@ -74,6 +74,10 @@ export class Kc extends plugin {
          } 
          //只保留赌以外的字段。写入变量
          smoney = smoney.replace(/#|赌银两/g, "").trim();
+         if(USER_MONEY < smoney){
+            await e.reply('你够钱嘛！不许赌！')
+            return false
+         }
          smoneyres = smoney;
          console.log(smoney);
          await e.reply(`你投入了${smoney}银两，发送“大”或“小”来猜\n(提示:1,2,3为小,4,5,6为大)`, true)
@@ -81,7 +85,7 @@ export class Kc extends plugin {
         }      
 
     async allbet(e){
-            if (e.isGroup) 
+            if (!e.isGroup) 
                 return e.reply(['木鱼只能在群聊敲哦~'])
             /** 配置数据 */
             const configData = await readConfiguration()
@@ -117,6 +121,10 @@ export class Kc extends plugin {
             }
 
             let smoney = USER_MONEY;
+            if(smoney <= 0){
+                await e.reply('还梭哈呢，你够钱嘛！不许赌！')
+                return false
+            }
             smoneyres = smoney;
             console.log(smoney);
             await e.reply(`你投入了${smoney}银两，发送“大”或“小”来猜\n(提示:1,2,3为小,4,5,6为大)`, true)
@@ -150,7 +158,7 @@ export class Kc extends plugin {
             return e.reply([end])
             }else{
             let MoneyNumber = lodash.random(configData['min_bet'], configData['max_bet']) * 2.5;
-                let end = `你赌赢了，得到了${MoneyNumber}银两！目前银两：${USER_MONEY + MoneyNumber}`
+                let end = `你赌赢了，结果是${beting}!得到了${MoneyNumber}银两！目前银两：${USER_MONEY + MoneyNumber}`
                 USER_DATA['cd']['bet'] = CURRENT_SECOND + configData['cd_bet'];
                 USER_DATA['log']['bet'].push(`[${getCurrentDate()}] 赢了${MoneyNumber}银两`);
                 USER_DATA['money'] += MoneyNumber;
