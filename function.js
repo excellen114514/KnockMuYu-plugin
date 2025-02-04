@@ -73,3 +73,61 @@ export async function writeGameData(ID, newEntry){
     return fsp.writeFile(filePath, updatedJsonString);
 
 }
+
+// 读取文件夹内所有JSON文件的路径
+export async function getFilePaths(folder) {
+    const files = await fsp.readdir(folder);
+    return files
+        .filter(file => path.extname(file) === '.json')
+        .map(file => path.join(folder, file));
+}
+
+// 读取并解析JSON文件，捕获异常
+export async function readJsonFile(filePath) {
+    try {
+        const data = await fsp.readFile(filePath, 'utf8');
+        const jsonData = JSON.parse(data);
+        // 确保name、lv和mlv都存在
+        if (jsonData.name !== undefined && jsonData.lv !== undefined && jsonData.mlv !== undefined) {
+            return { name: jsonData.name, lv: jsonData.lv, mlv: jsonData.mlv };
+        } else {
+            console.warn(`文件 ${filePath} 中缺少 'name'、'lv' 或 'mlv' 键，跳过该文件`);
+            return null;
+        }
+    } catch (error) {
+        console.error(`处理文件 ${filePath} 时出错，跳过该文件:`, error);
+        return null; // 返回null表示该文件处理失败
+    }
+}
+
+// 主调取函数
+export async function compareLvValues(folder) {
+    try {
+        // 获取所有JSON文件的路径
+        const filePaths = await getFilePaths(folder);
+
+        // 读取所有文件并提取name、lv和mlv
+        const playerPromises = filePaths.map(filePath => readJsonFile(filePath));
+        const playerData = await Promise.all(playerPromises);
+
+        // 过滤掉因错误而返回的null值以及lv或mlv为undefined的条目
+        const validPlayers = playerData.filter(player => player !== null && player.lv !== undefined && player.mlv !== undefined);
+
+        // 根据mlv降序排序，如果mlv相同，则根据lv降序排序
+        const sortedPlayers = validPlayers.sort((a, b) => {
+            if (b.mlv !== a.mlv) {
+                return b.mlv - a.mlv;
+            } else {
+                return b.lv - a.lv;
+            }
+        });
+        let ciku = ['练气', '筑基', '金丹', '元婴', '化神', '炼虚', '大乘', '渡劫', '真仙', '金仙', '太乙', '大罗', '道祖'];
+        let Mlv 
+        // 生成字符串
+        const resultString = sortedPlayers.map(player => `${player.name}的等级是${player.lv}，境界是${Mlv = ciku[player.mlv]}`).join('，\n');
+        return `${resultString}`; // 返回格式化的字符串
+    } catch (error) {
+        console.error('处理文件时出错:', error);
+        return '出错了，请检查文件夹路径或文件内容'; // 返回错误信息
+    }
+}
