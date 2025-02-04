@@ -21,6 +21,7 @@ git clone --depth=1 https://github.com/excellen114514/KnockMuYu-plugin.git ./plu
 >[!WARNING]
 >如果出现命令无响应或者不合理情况，请发送 查看木鱼 检查是否存在undefined 如果存在则使用此功能
 >在玩家数据更新后一定要发送境界更新
+- [x] 木鱼排行
 - [x] 等级突破
 - [x] 境界突破 
 - [x] 木鱼帮助
