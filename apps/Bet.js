@@ -74,6 +74,12 @@ export class Kc extends plugin {
          } 
          //只保留赌以外的字段。写入变量
          smoney = smoney.replace(/#|赌银两/g, "").trim();
+         if (!/^\d+$/.test(smoney)) {
+            await e.reply('请输入有效的数字金额！');
+            return;
+        }
+        
+        smoney = parseInt(smoney, 10); // 转换为整数
          if(USER_MONEY < smoney){
             await e.reply('你够钱嘛！不许赌！')
             return false
@@ -85,7 +91,7 @@ export class Kc extends plugin {
         }      
 
     async allbet(e){
-            if (e.isGroup) 
+            if (!e.isGroup) 
                 return e.reply(['木鱼只能在群聊敲哦~'])
             /** 配置数据 */
             const configData = await readConfiguration()
