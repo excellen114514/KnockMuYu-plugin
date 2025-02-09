@@ -85,7 +85,7 @@ export class Kc extends plugin {
         }      
 
     async allbet(e){
-            if (!e.isGroup) 
+            if (e.isGroup) 
                 return e.reply(['木鱼只能在群聊敲哦~'])
             /** 配置数据 */
             const configData = await readConfiguration()
@@ -133,8 +133,8 @@ export class Kc extends plugin {
 
     }
 
-    async guess(e){
-        const ID = [e.user_id]
+    async guess(e) {
+        const ID = [e.user_id];
         const configData = await readConfiguration();
         const USER_DATA = await getPlayerData(ID[0]);
         const CURRENT_SECOND = timestampToSeconds(Date.now());
@@ -146,31 +146,34 @@ export class Kc extends plugin {
         console.log(beting, betres);
         e = this.e
         console.log(e.msg);
-        if(e.msg !== betres){
-            let end = `真遗憾，你赌输了，结果是${beting}!失去了${smoney}银两！目前银两：${USER_MONEY - smoney}`
+        // 判断用户输入是否为“大”或“小”
+        if (e.msg !== '大' && e.msg !== '小') {
+            await e.reply(`请输入“大”或“小”来猜哦！`);
+            return; // 退出当前函数，等待用户重新输入
+        }
+    
+        if (e.msg !== betres) {
+            let end = `真遗憾，你赌输了，结果是${beting}!失去了${smoney}银两！目前银两：${USER_MONEY - smoney}`;
             USER_DATA['cd']['bet'] = CURRENT_SECOND + configData['cd_bet'];
             USER_DATA['log']['bet'].push(`[${getCurrentDate()}] 输了${smoney}银两`);
             USER_DATA['money'] -= smoney;
-        
+    
             // 将更新后的玩家数据存储到数据库
             storagePlayerData(ID[0], USER_DATA);
-            this.finish('guess')
-            return e.reply([end])
-            }else{
+            this.finish('guess');
+            return e.reply([end]);
+        } else {
             let MoneyNumber = lodash.random(configData['min_bet'], configData['max_bet']) * 2.5;
-                let end = `你赌赢了，结果是${beting}!得到了${MoneyNumber}银两！目前银两：${USER_MONEY + MoneyNumber}`
-                USER_DATA['cd']['bet'] = CURRENT_SECOND + configData['cd_bet'];
-                USER_DATA['log']['bet'].push(`[${getCurrentDate()}] 赢了${MoneyNumber}银两`);
-                USER_DATA['money'] += MoneyNumber;
-            
-                // 将更新后的玩家数据存储到数据库
-                storagePlayerData(ID[0], USER_DATA);
-                this.finish('guess')
-                return e.reply([end])
-            }
+            let end = `你赌赢了，结果是${beting}!得到了${MoneyNumber}银两！目前银两：${USER_MONEY + MoneyNumber}`;
+            USER_DATA['cd']['bet'] = CURRENT_SECOND + configData['cd_bet'];
+            USER_DATA['log']['bet'].push(`[${getCurrentDate()}] 赢了${MoneyNumber}银两`);
+            USER_DATA['money'] += MoneyNumber;
     
-        
-
+            // 将更新后的玩家数据存储到数据库
+            storagePlayerData(ID[0], USER_DATA);
+            this.finish('guess');
+            return e.reply([end]);
+        }
     }
 }
 async function bettres(beting) {
