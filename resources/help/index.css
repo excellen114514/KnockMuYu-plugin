@@ -1,24 +1,59 @@
 body {
-    width: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f4f8;
+    font-family: Arial, sans-serif;
 }
 
 .menu {
-    font-family: Arial, sans-serif;
-    background-color: #f7f8fb;
-    padding: 10px;
+    background-color: #ffffff;
+    padding: 20px;
     border: 1px solid #8bcfe8;
-    border-radius: 5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
     width: 400px;
 }
 
-.menu-item {
-    margin-bottom: 5px;
-}
-
 .instruction {
-    font-weight: bold;
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 10px;
 }
 
 .description {
+    font-size: 16px;
     color: #429db9;
+    margin-bottom: 20px;
+}
+
+.menu-item .button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #429db9;
+    background-color: #f7f8fb;
+    border: 1px solid #8bcfe8;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.menu-item .button1 {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #f10800;
+    background-color: #f7f8fb;
+    border: 1px solid #fe0000;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
 }
