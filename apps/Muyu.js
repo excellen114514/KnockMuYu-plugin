@@ -72,7 +72,7 @@ export class gmy extends plugin {
     } 
 
     async Cname(e){
-        if (e.isGroup) 
+        if (!e.isGroup) 
             return e.reply(['木鱼只能在群聊敲哦~'])
         const ID = [e.user_id]
         if (!isPlayerExist(ID[0])) {
