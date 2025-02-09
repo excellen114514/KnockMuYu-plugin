@@ -5,6 +5,7 @@ import {
 } from '../function.js';
 
 const MuYu =/^(#|\/)?查看木鱼$/
+const Name =/^(#|\/)?改名(.*)$/
 let ciku = ['练气', '筑基', '金丹', '元婴', '化神', '炼虚', '大乘', '渡劫', '真仙', '金仙', '太乙', '大罗', '道祖'];
 let mlv 
 export class gmy extends plugin {
@@ -18,7 +19,11 @@ export class gmy extends plugin {
                 { 
                  reg: MuYu,
                  fnc: 'Muyu' 
-                }
+                },
+                { 
+                    reg: Name,
+                    fnc: 'Cname' 
+                   }
             ]
         })
     }
@@ -55,7 +60,7 @@ export class gmy extends plugin {
          return e.reply([msg], true)
      } else { // 看别人
          // 判断是否存在该用户
-         if (!isPlayerExist(ID[1])) return e.reply([`ta貌似还没有踏入修仙世界哦`])
+         if (!isPlayerExist(ID[1])) return e.reply([`ta貌似还没有踏入修仙世界哦`], true)
 
          /** 用户数据 */
          const USER_DATA = await getPlayerData(ID[1])
@@ -65,4 +70,25 @@ export class gmy extends plugin {
          return e.reply([msg], true)
      }
     } 
+
+    async Cname(e){
+        if (e.isGroup) 
+            return e.reply(['木鱼只能在群聊敲哦~'])
+        const ID = [e.user_id]
+        if (!isPlayerExist(ID[0])) {
+            e.reply("你还没有木鱼哦~发送 查看木鱼 来获得你的第一个木鱼吧！", true)
+        }
+        let name = "";
+        /**循环，遍历命令并写入smoney变量中 */
+       for (let m of e.message) {
+         name += m.text;
+      } 
+      //获取你的新昵称，写入
+      name = name.replace(/#|改名/g, "").trim();
+      const USER_DATA = await getPlayerData(ID[0])
+      USER_DATA['name'] = name;
+      storagePlayerData(ID[0], USER_DATA);
+      return await this.reply(`修改名字成功！你现在的名字是${name}`, true)
+
+    }
 }
