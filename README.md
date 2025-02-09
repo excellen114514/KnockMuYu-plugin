@@ -1,4 +1,4 @@
-## KnockMuYu-plugin 1.3.0
+## KnockMuYu-plugin 1.3.1
 #### 一个适用于yunzai的小型文游
 
 # 这是一个敲木鱼就可以成仙的世界......
@@ -25,6 +25,7 @@ git clone --depth=1 https://github.com/excellen114514/KnockMuYu-plugin.git ./plu
 - [x] 等级突破
 - [x] 境界突破 
 - [x] 木鱼帮助
+- [x] 改名+你所改的名字 
 - [ ] 外出游历
 - [x] 渡劫(等级达到80级后不能再通过突破来提升等级)
 - [ ] 交易系统
